@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>solsec Report — testdata/contracts/vulnerable.sol</title>
+<style>
+  :root {
+    --bg: #0d1117; --surface: #161b22; --border: #30363d;
+    --text: #e6edf3; --muted: #8b949e;
+    --critical: #f85149; --high: #ff7b72; --medium: #e3b341; --low: #3fb950; --info: #58a6ff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg); color: var(--text); padding: 2rem; line-height: 1.6; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  header { border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+  h1 { font-size: 1.5rem; font-weight: 700; }
+  .meta { color: var(--muted); font-size: 0.875rem; margin-top: 0.25rem; }
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; text-align: center; }
+  .stat-card .count { font-size: 2rem; font-weight: 700; }
+  .stat-card .label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .critical { color: var(--critical); } .high { color: var(--high); }
+  .medium { color: var(--medium); } .low { color: var(--low); } .info { color: var(--info); }
+  .grade-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    padding: 1.5rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 1.5rem; }
+  .grade-letter { font-size: 4rem; font-weight: 900; line-height: 1; }
+  .grade-a { color: var(--low); } .grade-b { color: #57ab5a; } .grade-c { color: var(--medium); }
+  .grade-f { color: var(--critical); }
+  .verdict-text { font-size: 1.1rem; }
+  .score-bar { height: 8px; background: var(--border); border-radius: 4px; margin-top: 0.5rem; overflow: hidden; }
+  .score-fill { height: 100%; border-radius: 4px; background: var(--critical); transition: width 0.3s; }
+  .findings-table { width: 100%; border-collapse: collapse; }
+  .findings-table th { text-align: left; padding: 0.75rem 1rem; background: var(--surface);
+    border-bottom: 1px solid var(--border); font-size: 0.8rem; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--muted); }
+  .findings-table td { padding: 1rem; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 0.9rem; }
+  .findings-table tr:hover { background: var(--surface); }
+  .badge { display: inline-block; padding: 0.2em 0.6em; border-radius: 4px; font-size: 0.75rem;
+    font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+  .badge-critical { background: rgba(248,81,73,0.15); color: var(--critical); border: 1px solid var(--critical); }
+  .badge-high { background: rgba(255,123,114,0.15); color: var(--high); border: 1px solid var(--high); }
+  .badge-medium { background: rgba(227,179,65,0.15); color: var(--medium); border: 1px solid var(--medium); }
+  .badge-low { background: rgba(63,185,80,0.15); color: var(--low); border: 1px solid var(--low); }
+  .badge-info { background: rgba(88,166,255,0.15); color: var(--info); border: 1px solid var(--info); }
+  .remediation { background: rgba(88,166,255,0.05); border-left: 3px solid var(--info);
+    padding: 0.5rem 0.75rem; margin-top: 0.5rem; font-size: 0.85rem; border-radius: 0 4px 4px 0; }
+  .swc-ref { font-size: 0.75rem; color: var(--muted); }
+  code { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.85em;
+    background: var(--surface); padding: 0.1em 0.4em; border-radius: 3px; }
+  .no-findings { text-align: center; padding: 3rem; color: var(--muted); }
+  .source-badge { font-size: 0.7rem; padding: 0.1em 0.4em; border-radius: 3px;
+    background: var(--border); color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>🔐 solsec — Smart Contract Security Report</h1>
+    <div class="meta">Target: <code>testdata/contracts/vulnerable.sol</code> &nbsp;|&nbsp; Generated: 2026-02-27 12:44:10 UTC</div>
+  </header>
+
+  <div class="grade-card">
+    <div class="grade-letter grade-f">F</div>
+    <div>
+      <div class="verdict-text">🚨 Critical risk. This contract must not be deployed.</div>
+      <div class="score-bar" style="width: 200px; margin-top: 0.75rem;">
+        <div class="score-fill" style="width: 100%;"></div>
+      </div>
+      <div style="font-size:0.8rem; color:var(--muted); margin-top:0.25rem;">Risk score: 100/100</div>
+    </div>
+  </div>
+
+  <div class="summary-grid">
+    <div class="stat-card"><div class="count">5</div><div class="label">Total</div></div>
+    <div class="stat-card"><div class="count critical">1</div><div class="label">Critical</div></div>
+    <div class="stat-card"><div class="count high">4</div><div class="label">High</div></div>
+    <div class="stat-card"><div class="count medium">0</div><div class="label">Medium</div></div>
+    <div class="stat-card"><div class="count low">0</div><div class="label">Low</div></div>
+    <div class="stat-card"><div class="count info">0</div><div class="label">Info</div></div>
+  </div>
+
+  
+  <table class="findings-table">
+    <thead>
+      <tr>
+        <th>Severity</th><th>ID</th><th>Title</th><th>Location</th><th>Source</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+    <tr>
+      <td><span class="badge badge-critical">Critical</span></td>
+      <td><code>CUSTOM-ACCESS-1</code></td>
+      <td>
+        <strong>Missing Access Control on mint()</strong>
+        <div style="color:var(--muted); font-size:0.85rem; margin-top:0.25rem;">testdata/contracts/vulnerable.sol:16 — Function 'mint' appears to be missing an access control modifier. Unrestricted minting allows anyone to inflate token supply to infinity.</div>
+        
+        <div class="remediation">💡 Add an access control modifier to 'mint()'. Use onlyOwner (OpenZeppelin Ownable) or onlyRole(ROLE) (OpenZeppelin AccessControl) depending on your access model.</div>
+        
+        <div class="swc-ref" style="margin-top:0.4rem;">Ref: SWC-105</div>
+      </td>
+      <td>
+        <code>testdata/contracts/vulnerable.sol</code>
+        <br><span style="color:var(--muted);">Line: 16</span>
+      </td>
+      <td><span class="source-badge">custom</span></td>
+    </tr>
+    
+    <tr>
+      <td><span class="badge badge-high">High</span></td>
+      <td><code>CUSTOM-REENTRANT-1</code></td>
+      <td>
+        <strong>State Change After External Call (Reentrancy Risk)</strong>
+        <div style="color:var(--muted); font-size:0.85rem; margin-top:0.25rem;">In function 'withdraw' (testdata/contracts/vulnerable.sol line 25): state variable modified after external call on line 23. If the callee re-enters this function before the state update, it can exploit the stale state.</div>
+        
+        <div class="remediation">💡 Move all state changes BEFORE the external call (checks-effects-interactions). Alternatively, add OpenZeppelin's nonReentrant modifier.</div>
+        
+        <div class="swc-ref" style="margin-top:0.4rem;">Ref: SWC-107</div>
+      </td>
+      <td>
+        <code>testdata/contracts/vulnerable.sol</code>
+        <br><span style="color:var(--muted);">Lines: 23, 25</span>
+      </td>
+      <td><span class="source-badge">custom</span></td>
+    </tr>
+    
+    <tr>
+      <td><span class="badge badge-high">High</span></td>
+      <td><code>CUSTOM-ACCESS-2</code></td>
+      <td>
+        <strong>Missing Access Control on withdraw()</strong>
+        <div style="color:var(--muted); font-size:0.85rem; margin-top:0.25rem;">testdata/contracts/vulnerable.sol:21 — Function 'withdraw' appears to be missing an access control modifier. Unrestricted withdrawals allow draining of contract funds.</div>
+        
+        <div class="remediation">💡 Add an access control modifier to 'withdraw()'. Use onlyOwner (OpenZeppelin Ownable) or onlyRole(ROLE) (OpenZeppelin AccessControl) depending on your access model.</div>
+        
+        <div class="swc-ref" style="margin-top:0.4rem;">Ref: SWC-105</div>
+      </td>
+      <td>
+        <code>testdata/contracts/vulnerable.sol</code>
+        <br><span style="color:var(--muted);">Line: 21</span>
+      </td>
+      <td><span class="source-badge">custom</span></td>
+    </tr>
+    
+    <tr>
+      <td><span class="badge badge-high">High</span></td>
+      <td><code>CUSTOM-OVERFLOW-1</code></td>
+      <td>
+        <strong>Potential Integer Overflow (Solidity < 0.8)</strong>
+        <div style="color:var(--muted); font-size:0.85rem; margin-top:0.25rem;">testdata/contracts/vulnerable.sol:17 — Arithmetic operation in Solidity 0.7.x without SafeMath. Integer overflow/underflow silently wraps in versions before 0.8.0.</div>
+        
+        <div class="remediation">💡 Upgrade to Solidity ^0.8.0 where overflow/underflow revert by default. If upgrading is not possible, use OpenZeppelin SafeMath for all arithmetic.</div>
+        
+        <div class="swc-ref" style="margin-top:0.4rem;">Ref: SWC-101</div>
+      </td>
+      <td>
+        <code>testdata/contracts/vulnerable.sol</code>
+        <br><span style="color:var(--muted);">Line: 17</span>
+      </td>
+      <td><span class="source-badge">custom</span></td>
+    </tr>
+    
+    <tr>
+      <td><span class="badge badge-high">High</span></td>
+      <td><code>CUSTOM-OVERFLOW-2</code></td>
+      <td>
+        <strong>Potential Integer Overflow (Solidity < 0.8)</strong>
+        <div style="color:var(--muted); font-size:0.85rem; margin-top:0.25rem;">testdata/contracts/vulnerable.sol:25 — Arithmetic operation in Solidity 0.7.x without SafeMath. Integer overflow/underflow silently wraps in versions before 0.8.0.</div>
+        
+        <div class="remediation">💡 Upgrade to Solidity ^0.8.0 where overflow/underflow revert by default. If upgrading is not possible, use OpenZeppelin SafeMath for all arithmetic.</div>
+        
+        <div class="swc-ref" style="margin-top:0.4rem;">Ref: SWC-101</div>
+      </td>
+      <td>
+        <code>testdata/contracts/vulnerable.sol</code>
+        <br><span style="color:var(--muted);">Line: 25</span>
+      </td>
+      <td><span class="source-badge">custom</span></td>
+    </tr>
+    
+    </tbody>
+  </table>
+  
+
+  <footer style="margin-top:2rem; padding-top:1rem; border-top:1px solid var(--border);
+    font-size:0.8rem; color:var(--muted); text-align:center;">
+    Generated by <strong>solsec v1.0.0</strong> — Smart Contract Static Analyzer<br>
+    This report is a tool-assisted analysis. Always conduct a manual audit before mainnet deployment.
+  </footer>
+</div>
+</body>
+</html>
